@@ -1,0 +1,47 @@
+<!--<div *ngFor="let num of numbers">{{num.number}}</div>-->
+<!--<p-button (onClick)="count()" label="Click"></p-button>-->
+<!--<p-button (onClick)="count()" icon="pi pi-check" label="Click"></p-button>-->
+<!--<p-button (onClick)="count()" icon="pi pi-check" iconPos="right" label="Click"></p-button>-->
+<!--<p-button (onClick)="count()" icon="pi pi-check"></p-button>-->
+<!--<p-button (onClick)="count()" icon="pi pi-check" [disabled]="true" label="Disabled"></p-button>-->
+<!--<div class="ui-g">-->
+<!--<h3 class="ui-g-2">当前玩家{{cur_player}}</h3>-->
+<!--<div style="text-align: center" pButton="" class="ui-g-2 " label="重新开始"></div>-->
+<!--</div>-->
+
+<p-toolbar>
+  <div class="ui-toolbar-group-left">
+    <!--<h3 class="ui-g-2">当前玩家{{cur_player}}</h3>-->
+    <!--<button pButton type="button" [label]="cur_player"></button>-->
+    <span>玩家{{cur_player}}请选择</span>
+
+    <!--<button pButton type="button" label="Upload" icon="pi pi-upload" class="ui-button-success"></button>-->
+
+    <!--<i class="pi pi-bars"></i>-->
+
+    <!--<p-splitButton label="Save" icon="pi pi-check" [model]="items" styleClass="ui-button-warning"></p-splitButton>-->
+  </div>
+
+  <div class="ui-toolbar-group-right">
+    <button pButton type="button" label="重玩" (click)="refresh()"></button>
+    <button pButton type="button" label="规则" (click)="showRule()"></button>
+  </div>
+</p-toolbar>
+<hr>
+<p-dialog header="游戏规则" [(visible)]="show_rule_view">
+  <p>1.第一个人先顺序选择一个或者两个方块,点一下即可。</p>
+  <p>2.第二个人再顺序选择一个或者两个方块。</p>
+  <p>3.轮流进行点击。</p>
+  <p>4.胜利目标，谁点到20就是赢家</p>
+</p-dialog>
+<p-confirmDialog></p-confirmDialog>
+<div class="ui-g">
+  <div pButton class="ui-g-1 ui-button-secondary"
+       [ngClass]="{'ui-button-danger':num.state=='p1','ui-button-info':num.state=='p2'}"
+       (click)="openCard(num,index)"
+       style="margin:10px"
+       *ngFor="let num of numbers;let index = index">
+    {{num.number}}
+  </div>
+  <!--<p-button class="ui-g-2" *ngFor="let num of numbers" >{{num.number}}</p-button>-->
+</div>
